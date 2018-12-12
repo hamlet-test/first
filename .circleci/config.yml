@@ -7,4 +7,5 @@ jobs:
       - checkout
       - run: |
           cd '..'
+          cd '..'
           node validator.js
