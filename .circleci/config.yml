@@ -9,5 +9,5 @@ jobs:
           taskName=$CIRCLE_BRANCH
           if [ -d $taskName ]
           then
-	          node validator.js
+            node validator.js
           fi
