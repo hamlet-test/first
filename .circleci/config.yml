@@ -8,4 +8,5 @@ jobs:
       - run: |
           cd '..'
           cd '..'
+          npm install
           node validator.js
