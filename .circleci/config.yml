@@ -8,5 +8,5 @@ jobs:
       - run: |
           cd '..'
           cd '..'
-          npm install
+          sudo npm install -g npm@latest
           node validator.js
