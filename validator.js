@@ -1,2 +1,2 @@
 const assert = require('assert');
-assert.equal(3, 2);
+assert(0);
