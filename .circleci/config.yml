@@ -9,7 +9,7 @@ jobs:
           taskName=$CIRCLE_BRANCH
           if [[ -d $taskName ]] && [[ $taskName == _* ]] && [[ $taskName == \.* ]]
           then
-            cd _validator
+            # cd _validator
             node validator.js $taskName ALL
           fi
           
