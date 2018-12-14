@@ -11,3 +11,19 @@ jobs:
           then
             node validator.js
           fi
+          
+          #                                     _db_tasks
+          
+          taskName=_db_tasks/$CIRCLE_BRANCH
+          if [[ -d $taskName ]]
+          then
+            node validator.js
+          fi
+          
+          #                                     _devops_tasks
+          
+          taskName=_devops_tasks/$CIRCLE_BRANCH
+          if [[ -d $taskName ]]
+          then
+            node validator.js
+          fi
