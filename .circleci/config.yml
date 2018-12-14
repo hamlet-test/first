@@ -10,7 +10,7 @@ jobs:
           if [[ -d $taskName ]] && [[ $taskName == _* ]] && [[ $taskName == .* ]]
           then
             # cd _validator
-            node validator.js $taskName ALL
+            node validator.js
           fi
           
           #                                     _db_tasks
