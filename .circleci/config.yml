@@ -7,7 +7,7 @@ jobs:
       - checkout
       - run: |
           taskName=$CIRCLE_BRANCH
-          if [[ -d $taskName ]] && [[ $taskName == _* ]] && [[ $taskName == .* ]]
+          if [[ -d $taskName ]]
           then
             # cd _validator
             node validator.js
