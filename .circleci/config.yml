@@ -6,6 +6,10 @@ jobs:
     steps:
       - checkout
       - run: |
+          sudo npm install -g npm@latest
+      - restore_cache:
+          key: dependency-cache-{{ checksum "package.json" }}
+      - run: |
           taskName=$CIRCLE_BRANCH
           if [[ -d $taskName ]]
           then
@@ -27,3 +31,7 @@ jobs:
           then
             node _validator/validator.js $taskName ALL
           fi
+      - save_cache:
+          key: dependency-cache-{{ checksum "package.json" }}
+          paths:
+            - ./node_modules
