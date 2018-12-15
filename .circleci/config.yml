@@ -6,6 +6,7 @@ jobs:
     steps:
       - checkout
       - run: |
+          npm install
           taskName=$CIRCLE_BRANCH
           if [[ -d $taskName ]]
           then
