@@ -2,11 +2,10 @@ version: 2
 jobs:
   build:
     docker:
-      - image: circleci/node:latest
+      - image: circleci/node:4.8.2
     steps:
       - checkout
       - run: |
-          npm install
           taskName=$CIRCLE_BRANCH
           if [[ -d $taskName ]]
           then
