@@ -10,6 +10,12 @@ jobs:
       - restore_cache:
           key: dependency-cache-{{ checksum "package.json" }}
       - run: |
+          npm install
+      - save_cache:
+          key: dependency-cache-{{ checksum "package.json" }}
+          paths:
+            - ./node_modules
+      - run: |
           taskName=$CIRCLE_BRANCH
           if [[ -d $taskName ]]
           then
@@ -31,7 +37,3 @@ jobs:
           then
             node _validator/validator.js $taskName ALL
           fi
-      - save_cache:
-          key: dependency-cache-{{ checksum "package.json" }}
-          paths:
-            - ./node_modules
