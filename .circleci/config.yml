@@ -5,16 +5,15 @@ jobs:
       - image: circleci/node:4.8.2
     steps:
       - checkout
-      - run: |
-          sudo npm install -g npm@latest
       - restore_cache:
-          key: dependency-cache-{{ checksum "package.json" }}
-      - run: |
-          npm install
+        keys:
+          - node-v1-{{ .Branch }}-{{ checksum "package-lock.json" }}
+          - node-v1-{{ .Branch }}-
+          - node-v1-
       - save_cache:
-          key: dependency-cache-{{ checksum "package.json" }}
-          paths:
-            - ./node_modules
+        paths:
+          - ~/usr/local/lib/node_modules
+        key: node-v1-{{ .Branch }}-{{ checksum "package-lock.json" }}
       - run: |
           taskName=$CIRCLE_BRANCH
           if [[ -d $taskName ]]
