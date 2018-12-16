@@ -4,19 +4,10 @@ jobs:
     docker:
       - image: circleci/node:latest
     steps:
-      - checkout
-      - run:
-          name: update-npm
-          command: 'sudo npm install -g npm@latest'
-      - restore_cache:
-          key: dependency-cache-{{ checksum "_validator/package.json" }}
       - run: |
+          cd _validator
           npm install
-      - save_cache:
-          key: dependency-cache-{{ checksum "_validator/package.json" }}
-          paths:
-            - ./node_modules
-      - run: |
+          cd ..
           taskName=$CIRCLE_BRANCH
           if [[ -d $taskName ]]
           then
