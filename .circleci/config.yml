@@ -5,10 +5,20 @@ jobs:
       - image: circleci/node:latest
     steps:
       - checkout
+      - run:
+          name: update-npm
+          command: 'sudo npm install -g npm@latest'
+      - restore_cache:
+          key: dependency-cache-{{ checksum "package.json" }}
       - run: |
           cd _validator
           npm install
           cd ..
+      - save_cache:
+          key: dependency-cache-{{ checksum "package.json" }}
+          paths:
+            - ./node_modules
+      - run: |
           taskName=$CIRCLE_BRANCH
           if [[ -d $taskName ]]
           then
