@@ -1,14 +1,13 @@
 version: 2
 jobs:
   build:
+    working_directory: ~/_validator
     docker:
       - image: circleci/node:latest
     steps:
       - checkout
       - run: |
-          cd _validator
           npm install
-          cd ..
           taskName=$CIRCLE_BRANCH
           if [[ -d $taskName ]]
           then
