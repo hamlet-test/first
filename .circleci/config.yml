@@ -7,7 +7,18 @@ jobs:
       - checkout
       - run: |
           cd _validator
-          npm install
+      - run:
+          name: update-npm
+          command: 'sudo npm install -g npm@latest'
+      - restore_cache:
+          key: dependency-cache-{{ checksum "package.json" }}
+      - run:
+          command: npm install
+      - save_cache:
+          key: dependency-cache-{{ checksum "package.json" }}
+          paths:
+            - ./node_modules
+      - run: |
           taskName=$CIRCLE_BRANCH
           if [[ -d $taskName ]]
           then
