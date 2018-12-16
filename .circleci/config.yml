@@ -6,7 +6,7 @@ jobs:
     steps:
       - checkout
       - run: |
-        cd _validator
+          cd _validator
       - run:
           name: update-npm
           command: 'sudo npm install -g npm@latest'
