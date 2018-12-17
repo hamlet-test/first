@@ -4,4 +4,4 @@ var colors = require('colors');
 var request = require('request');
 var PythonShell = require('python-shell');
 var assert = require('assert');
-assert(process.argv[0] === 'anb');
+assert(process.argv[2] === 'anb');
