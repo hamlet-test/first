@@ -6,13 +6,18 @@ jobs:
     steps:
       - checkout
       - run: |
+          validate() {
+            cd _validator
+            node _validator/validator.js $taskName ALL
+            cd ..
+          }
           cd _validator
           npm install
           cd ..
           taskName=$CIRCLE_BRANCH
           if [[ -d $taskName ]]
           then
-            node _validator/validator.js $taskName ALL
+            validate
           fi
           
           #                                     _db_tasks
@@ -20,7 +25,7 @@ jobs:
           taskName=_db_tasks/$CIRCLE_BRANCH
           if [[ -d $taskName ]]
           then
-            node _validator/validator.js $taskName ALL
+            validate
           fi
           
           #                                     _devops_tasks
@@ -28,5 +33,5 @@ jobs:
           taskName=_devops_tasks/$CIRCLE_BRANCH
           if [[ -d $taskName ]]
           then
-            node _validator/validator.js $taskName ALL
+            validate
           fi
