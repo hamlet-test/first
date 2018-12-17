@@ -8,7 +8,7 @@ jobs:
       - run: |
           validate() {
             cd _validator
-            node _validator/validator.js $taskName ALL
+            node validator.js $taskName ALL
             cd ..
           }
           cd _validator
