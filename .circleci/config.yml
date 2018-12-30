@@ -6,7 +6,6 @@ jobs:
     steps:
       - checkout
       - run: |
-          set -e
           validate() {
             cd _validator
             node validator.js $1 ALL
