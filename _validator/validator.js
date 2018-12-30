@@ -5,3 +5,4 @@ var request = require('request');
 var PythonShell = require('python-shell');
 var assert = require('assert');
 console.log('Err'.red);
+return 1;
